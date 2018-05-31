@@ -14,7 +14,9 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key: 
-    secure: $keymeme
+  api_key: $keymeme
   file: "adbcontrol.jar"
   skip_cleanup: true
+  on:
+    tags: true
+    
