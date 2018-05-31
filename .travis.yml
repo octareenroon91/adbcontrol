@@ -13,7 +13,7 @@ script:
 
 deploy:
   provider: releases
-  api_key: $keymeme
+  api_key: $otherkeymeme
   file: "adbcontrol.jar"
   skip_cleanup: true
   
