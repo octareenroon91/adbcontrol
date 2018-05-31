@@ -8,11 +8,16 @@ script: ant jar
 before_deploy:
   # Set up git user name and tag this commit
   - git config --local user.name $YOUR_USER_NAME
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+  - THETAG="$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+  - echo $THETAG
+  - git tag $THETAG
 
 deploy:
   provider: releases
-  api_key: $keymeme
+  api_key: 
+    secure: $keymeme
   file: "adbcontrol.jar"
   skip_cleanup: true
+    on:
+    tags: true
   
