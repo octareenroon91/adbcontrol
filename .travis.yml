@@ -18,6 +18,3 @@ deploy:
     secure: $keymeme
   file: "adbcontrol.jar"
   skip_cleanup: true
-    on:
-    tags: true
-  
