@@ -14,6 +14,7 @@ package name.schedenig.adbcontrol;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.MessageFormat;
 
@@ -139,7 +140,7 @@ public class AdbHelper
 		try
 		{
 			p.waitFor();
-                        i = imageIO.read(s);
+                        i = ImageIO.read(s);
                         return i;
 			
 		}
