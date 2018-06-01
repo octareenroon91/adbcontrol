@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.text.MessageFormat;
 
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO
+import javax.imageio.ImageIO;
 
 public class AdbHelper
 {
@@ -139,7 +139,7 @@ public class AdbHelper
 		try
 		{
 			p.waitFor();
-                        i = imageIO.read(s)
+                        i = imageIO.read(s);
                         return i;
 			
 		}
