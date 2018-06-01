@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.MessageFormat;
 
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO
+
 public class AdbHelper
 {
 	private Config config;
@@ -95,6 +98,56 @@ public class AdbHelper
 		
 		executeShellCommand(MessageFormat.format("screencap -p {0}", fileName), new ByteArrayOutputStream());
 		executeCommand(MessageFormat.format("pull {0} {1}", fileName, target.getAbsolutePath()), new ByteArrayOutputStream());
+	}
+        
+        public BufferedImage screenshot2()
+	{
+		//String fileName = config.getPhoneImageFilePath();
+		
+		//executeShellCommand(MessageFormat.format("screencap -p {0}", fileName), new ByteArrayOutputStream());
+		//executeCommand(MessageFormat.format("pull {0} {1}", fileName, target.getAbsolutePath()), new ByteArrayOutputStream());
+                
+                // from executecommand 
+                
+                String cmd = "exec-out screencap -p"; // gonna slam this to adb stdout, make it into a bufferedimage
+                String cmdLine = config.getAdbCommand() + " " + cmd;
+                
+                
+		Process p;
+		
+		try
+		{
+			p = Runtime.getRuntime().exec(cmdLine);
+		}
+		catch(IOException ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}
+		
+		//StreamGobbler outReader = new StreamGobbler(p.getInputStream(), out); NO WE WANT INPUT
+                InputStream s = p.getInputStream() ;
+                StreamGobbler errReader = new StreamGobbler(p.getErrorStream(), null);
+                
+                ///// inputstream >> bufferedimage(inputstream) >> adbcontrolpanel.image is bufferedimage
+		
+		//outReader.start();
+		errReader.start();
+                
+                BufferedImage i = null ;
+                
+		try
+		{
+			p.waitFor();
+                        i = imageIO.read(s)
+                        return i;
+			
+		}
+		catch(InterruptedException ex)
+		{
+			Thread.currentThread().interrupt();
+			return null;
+		}
 	}
 
 	public void sendSwipe(int downX, int downY, int upX, int upY)
