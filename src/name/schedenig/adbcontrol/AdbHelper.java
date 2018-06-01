@@ -140,13 +140,23 @@ public class AdbHelper
 		try
 		{
 			p.waitFor();
-                        i = ImageIO.read(s);
-                        return i;
-			
+                        
 		}
 		catch(InterruptedException ex)
 		{
 			Thread.currentThread().interrupt();
+			return null;
+		}
+		
+		try
+		{
+                        i = ImageIO.read(s);
+                        return i;
+			
+		}
+		catch(IOException ex)
+		{
+			ex.printStackTrace();
 			return null;
 		}
 	}
