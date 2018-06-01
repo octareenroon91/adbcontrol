@@ -242,6 +242,14 @@ public class AdbControlPanel extends JPanel implements MouseListener, KeyListene
 		}
 	}
 
+
+        private void makeScreenshot()
+        {
+                image = adbHelper.screenshot2();
+                repaint();
+        }
+
+/*
 	private void makeScreenshot()
 	{
 		adbHelper.screenshot(imageFile);
@@ -262,7 +270,7 @@ public class AdbControlPanel extends JPanel implements MouseListener, KeyListene
 		
 		repaint();
 	}
-
+*/
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
