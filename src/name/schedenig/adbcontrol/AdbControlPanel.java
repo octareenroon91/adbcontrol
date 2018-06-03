@@ -84,7 +84,7 @@ public class AdbControlPanel extends JPanel implements MouseListener, KeyListene
 				@Override
 				public void run()
 				{
-					while(!Thread.interrupted())
+					//while(!Thread.interrupted())
 					{
 						makeScreenshot();
 						
