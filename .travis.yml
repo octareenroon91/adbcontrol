@@ -9,11 +9,15 @@ script:
   - git config --local user.name $YOUR_USER_NAME
   - THETAG="$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
   - echo $THETAG
+  - git branch
   - git tag $THETAG
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_PULL_REQUEST_BRANCH
 
 deploy:
   provider: releases
   api_key: $otherkeymeme
   file: "adbcontrol.jar"
   skip_cleanup: true
-  
+  on:
+    all_branches: true
