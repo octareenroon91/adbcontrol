@@ -11,6 +11,7 @@ script:
   - echo $THETAG
   - git branch
   - git tag $THETAG
+  - set|cut -s -d= -f1|grep -E "^\S"
 
 deploy:
   provider: releases
