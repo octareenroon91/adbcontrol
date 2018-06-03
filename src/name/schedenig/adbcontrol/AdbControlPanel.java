@@ -94,7 +94,7 @@ public class AdbControlPanel extends JPanel implements MouseListener, KeyListene
 						}
 						catch(InterruptedException ex)
 						{
-							break;
+							//break;
 						}
 					}
 				}
