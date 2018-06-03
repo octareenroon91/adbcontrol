@@ -9,6 +9,7 @@ script:
   - git config --local user.name $YOUR_USER_NAME
   - THETAG="$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
   - echo $THETAG
+  - git branch
   - git tag $THETAG
 
 deploy:
